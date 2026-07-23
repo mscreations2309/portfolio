@@ -988,8 +988,28 @@ body {
         white-space: nowrap !important;
     }
 
-    .profile-contact-list li.print-only {
-        display: flex !important;
+    .btn-portfolio-pdf {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        padding: 0.5rem 1.25rem !important;
+        background-color: var(--primary) !important;
+        color: white !important;
+        border-radius: var(--radius-md) !important;
+        font-family: var(--font-heading) !important;
+        font-weight: 600 !important;
+        font-size: 8.5pt !important;
+        text-decoration: none !important;
+        margin-top: 0.75rem !important;
+        border: none !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .btn-portfolio-pdf i {
+        color: white !important;
+        font-size: 9pt !important;
     }
 
     .sidebar {
