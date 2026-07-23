@@ -156,9 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lang = repo.language || '';
                 const langInfo = getLangColor(lang);
                 
-                // Keep description clean; do not render element if empty
-                const descHTML = repo.description 
-                    ? `<div class="gh-repo-desc">${repo.description.length > 90 ? repo.description.slice(0, 88) + '…' : repo.description}</div>`
+                // Keep description clean; do not render element if empty or matches generic text
+                const descriptionText = repo.description ? repo.description.trim() : '';
+                const hasNoDesc = !descriptionText || 
+                                  descriptionText.toLowerCase() === 'no description provided' || 
+                                  descriptionText.toLowerCase() === 'no description provided.';
+                const descHTML = !hasNoDesc
+                    ? `<div class="gh-repo-desc">${descriptionText.length > 90 ? descriptionText.slice(0, 88) + '…' : descriptionText}</div>`
                     : '';
 
                 const card = document.createElement('a');
