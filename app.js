@@ -118,12 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Animate stat cards
             animateCount(document.getElementById('gh-repos'), data.public_repos);
-            animateCount(document.getElementById('gh-followers'), data.followers);
             document.getElementById('gh-joined').textContent = joinYear;
         } catch (e) {
             // Fallback static values
             document.getElementById('gh-repos').textContent = '8+';
-            document.getElementById('gh-followers').textContent = '—';
             document.getElementById('gh-joined').textContent = '2019';
         }
     }
@@ -157,11 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
             displayRepos.forEach(repo => {
                 const lang = repo.language || '';
                 const langInfo = getLangColor(lang);
-                const desc = repo.description
-                    ? repo.description.length > 90
-                        ? repo.description.slice(0, 88) + '…'
-                        : repo.description
-                    : 'No description provided.';
+                
+                // Keep description clean; do not render element if empty
+                const descHTML = repo.description 
+                    ? `<div class="gh-repo-desc">${repo.description.length > 90 ? repo.description.slice(0, 88) + '…' : repo.description}</div>`
+                    : '';
 
                 const card = document.createElement('a');
                 card.href = repo.html_url;
@@ -174,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${repo.name}
                         ${repo.fork ? '<span style="font-size:0.7rem;opacity:0.6;">(fork)</span>' : ''}
                     </div>
-                    <div class="gh-repo-desc">${desc}</div>
+                    ${descHTML}
                     <div class="gh-repo-meta">
                         ${lang ? `
                         <div class="gh-repo-lang">
