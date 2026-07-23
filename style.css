@@ -1092,6 +1092,30 @@ body {
         border: 1px solid var(--border-color) !important;
     }
 
+    /* Force high-contrast text color overrides specifically for print layout elements */
+    .card p, .card h1, .card h2, .card h3, .card h4, .card span, .card strong, .card li,
+    .profile-section h1, .profile-section p, .profile-section li, .profile-section a,
+    .ai-workflow-card h3, .ai-workflow-card p, .ai-workflow-card li, .ai-workflow-card strong,
+    .timeline-item h3, .timeline-item h4, .timeline-item li, .timeline-item span,
+    .project-card h3, .project-card p, .project-card span,
+    .education-item h3, .education-item p, .education-item span,
+    .private-repos-callout strong, .private-repos-callout p, .private-repos-callout span,
+    .github-stat-card .stat-value, .github-stat-card .stat-label {
+        color: #0f172a !important; /* Slate 900 */
+    }
+
+    /* Soften secondary text colors in print for visual hierarchy */
+    .profile-section .tagline, .profile-section .specialty,
+    .timeline-item .job-duration, .project-desc, .education-item .date-badge,
+    .ai-bullets-row li, .job-bullets li, .gh-repo-desc {
+        color: #475569 !important; /* Slate 600 */
+    }
+
+    /* Keep icons highly visible */
+    i, .stat-icon i {
+        color: #3b82f6 !important; /* Premium Blue for print highlights */
+    }
+
     /* Force Work Experience section to start cleanly at top of Page 3 */
     .main-content > section:nth-of-type(2) {
         break-before: page !important;
