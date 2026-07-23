@@ -1237,6 +1237,18 @@ body {
         font-size: 8.2pt !important;
         line-height: 1.3 !important;
     }
+
+    .gh-view-all-btn {
+        display: inline-flex !important;
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        padding: 0.6rem 1.25rem !important;
+        font-size: 8.5pt !important;
+        text-decoration: none !important;
+        border-radius: var(--radius-md) !important;
+    }
 }
 
 /* =============================================
