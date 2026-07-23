@@ -1,0 +1,219 @@
+// --- Interactive Logic for Sheshmani's Premium Resume ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Theme Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeButton(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeButton(newTheme);
+    });
+
+    function updateThemeButton(theme) {
+        const icon = themeToggle.querySelector('i');
+        const text = themeToggle.querySelector('span');
+        if (theme === 'dark') {
+            icon.className = 'fa-solid fa-sun';
+            text.textContent = 'Light Mode';
+        } else {
+            icon.className = 'fa-solid fa-moon';
+            text.textContent = 'Dark Mode';
+        }
+    }
+
+    // 2. AI Highlight Toggle
+    const aiToggle = document.getElementById('aiHighlightToggle');
+    let aiHighlightsEnabled = true; // Enabled by default for recruiter wow factor
+
+    // Apply default active state
+    document.body.classList.add('ai-highlight-active');
+
+    aiToggle.addEventListener('click', () => {
+        aiHighlightsEnabled = !aiHighlightsEnabled;
+        if (aiHighlightsEnabled) {
+            document.body.classList.add('ai-highlight-active');
+            aiToggle.classList.add('animate-pulse');
+            aiToggle.querySelector('span').textContent = 'Highlight AI Skillsets';
+        } else {
+            document.body.classList.remove('ai-highlight-active');
+            aiToggle.classList.remove('animate-pulse');
+            aiToggle.querySelector('span').textContent = 'Show AI Skillsets';
+        }
+    });
+
+    // 3. Print Button Handler
+    const printBtn = document.getElementById('printBtn');
+    printBtn.addEventListener('click', () => {
+        window.print();
+    });
+
+    // 4. Project Filtering
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all tabs
+            tabButtons.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked tab
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                if (filterValue === 'all' || category === filterValue) {
+                    card.style.display = 'flex';
+                    // Trigger fade-in transition
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transition = 'opacity 0.3s ease';
+                    }, 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // 5. GitHub Stats Loader
+    const GH_USERNAME = 'mscreations2309';
+
+    // Language to CSS class & color map
+    const langColors = {
+        'Kotlin':     { cls: 'lang-kotlin',     hex: 'hsl(280, 75%, 65%)' },
+        'Java':       { cls: 'lang-java',        hex: 'hsl(20, 80%, 55%)' },
+        'TypeScript': { cls: 'lang-typescript',  hex: 'hsl(210, 80%, 55%)' },
+        'JavaScript': { cls: 'lang-javascript',  hex: 'hsl(48, 95%, 55%)' },
+        'Python':     { cls: 'lang-python',      hex: 'hsl(220, 75%, 60%)' },
+        'CSS':        { cls: 'lang-css',         hex: 'hsl(195, 75%, 50%)' },
+    };
+
+    function getLangColor(lang) {
+        return langColors[lang] || { cls: 'lang-default', hex: 'var(--primary)' };
+    }
+
+    // Animated count-up
+    function animateCount(el, target, suffix = '') {
+        const duration = 1200;
+        const start = performance.now();
+        el.classList.add('count-up');
+        function step(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else {
+                el.textContent = target + suffix;
+                el.classList.remove('count-up');
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    // Fetch user profile stats
+    async function loadGitHubStats() {
+        try {
+            const res = await fetch(`https://api.github.com/users/${GH_USERNAME}`);
+            if (!res.ok) throw new Error('GitHub API error');
+            const data = await res.json();
+
+            const joinYear = new Date(data.created_at).getFullYear();
+
+            // Animate stat cards
+            animateCount(document.getElementById('gh-repos'), data.public_repos);
+            animateCount(document.getElementById('gh-followers'), data.followers);
+            document.getElementById('gh-joined').textContent = joinYear;
+        } catch (e) {
+            // Fallback static values
+            document.getElementById('gh-repos').textContent = '8+';
+            document.getElementById('gh-followers').textContent = '—';
+            document.getElementById('gh-joined').textContent = '2019';
+        }
+    }
+
+    // Fetch repos and compute total stars + render cards
+    async function loadGitHubRepos() {
+        const grid = document.getElementById('gh-repos-grid');
+        const starsEl = document.getElementById('gh-stars');
+
+        try {
+            const res = await fetch(`https://api.github.com/users/${GH_USERNAME}/repos?per_page=100&sort=updated`);
+            if (!res.ok) throw new Error('Repos API error');
+            const repos = await res.json();
+
+            // Compute total stars
+            const totalStars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
+            animateCount(starsEl, totalStars);
+
+            // Filter own (non-fork) repos, sort by updated
+            const ownRepos = repos
+                .filter(r => !r.fork)
+                .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+                .slice(0, 6);
+
+            // If no own repos, show a few forks
+            const displayRepos = ownRepos.length > 0 ? ownRepos : repos.slice(0, 6);
+
+            // Clear skeletons
+            grid.innerHTML = '';
+
+            displayRepos.forEach(repo => {
+                const lang = repo.language || '';
+                const langInfo = getLangColor(lang);
+                const desc = repo.description
+                    ? repo.description.length > 90
+                        ? repo.description.slice(0, 88) + '…'
+                        : repo.description
+                    : 'No description provided.';
+
+                const card = document.createElement('a');
+                card.href = repo.html_url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                card.className = 'gh-repo-card';
+                card.innerHTML = `
+                    <div class="gh-repo-name">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                        ${repo.name}
+                        ${repo.fork ? '<span style="font-size:0.7rem;opacity:0.6;">(fork)</span>' : ''}
+                    </div>
+                    <div class="gh-repo-desc">${desc}</div>
+                    <div class="gh-repo-meta">
+                        ${lang ? `
+                        <div class="gh-repo-lang">
+                            <span class="gh-lang-dot ${langInfo.cls}" style="background:${langInfo.hex};"></span>
+                            ${lang}
+                        </div>` : ''}
+                        <div class="gh-repo-stars">
+                            <i class="fa-solid fa-star"></i>
+                            ${repo.stargazers_count}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+        } catch (e) {
+            starsEl.textContent = '—';
+            grid.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;">Could not load repositories. Visit GitHub to view them.</p>';
+        }
+    }
+
+    // Trigger GitHub loads
+    loadGitHubStats();
+    loadGitHubRepos();
+});
