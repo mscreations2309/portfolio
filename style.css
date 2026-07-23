@@ -269,6 +269,12 @@ body {
     text-transform: uppercase;
 }
 
+@media screen {
+    .print-only {
+        display: none !important;
+    }
+}
+
 .profile-contact-list {
     list-style: none;
     margin-top: 1.25rem;
@@ -980,6 +986,10 @@ body {
     .profile-contact-list li {
         font-size: 8.5pt !important;
         white-space: nowrap !important;
+    }
+
+    .profile-contact-list li.print-only {
+        display: flex !important;
     }
 
     .sidebar {
