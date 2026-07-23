@@ -1076,7 +1076,8 @@ body {
     .profile-section,
     .contact-card, 
     .skills-card, 
-    .ai-workflow-card {
+    .ai-workflow-card,
+    .github-stat-card {
         padding: 1.25rem !important;
         margin-bottom: 0.75rem !important;
         border-radius: var(--radius-md) !important;
