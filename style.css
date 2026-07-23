@@ -1015,11 +1015,19 @@ body {
     }
 
     body {
-        background-color: var(--bg-app) !important;
-        color: var(--text-main) !important;
+        /* Force light theme variables for print output */
+        background-color: #ffffff !important;
+        color: #1e293b !important; /* Slate 800 */
         font-size: 8.5pt; /* Clean font size for print reading */
         line-height: 1.4 !important;
         margin: 0.8cm 1cm !important; /* Slightly tighter margins to allow content to fill naturally */
+
+        /* Force light theme CSS variables specifically for print layout */
+        --bg-app: #f8fafc !important; /* Slate 50 */
+        --bg-card: #ffffff !important;
+        --text-main: #0f172a !important; /* Slate 900 */
+        --text-muted: #475569 !important; /* Slate 600 */
+        --border-color: #e2e8f0 !important; /* Slate 200 */
     }
 
     /* Reduce vertical gaps and increase padding slightly to occupy the page beautifully */
