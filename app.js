@@ -126,6 +126,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Fetch repos to calculate and animate Total Stars count
+    async function loadGitHubStars() {
+        const starsEl = document.getElementById('gh-stars');
+        try {
+            const res = await fetch(`https://api.github.com/users/${GH_USERNAME}/repos?per_page=100`);
+            if (!res.ok) throw new Error('Stars API error');
+            const repos = await res.json();
+            
+            const totalStars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
+            animateCount(starsEl, totalStars);
+        } catch (e) {
+            starsEl.textContent = '10+'; // Static fallback if rate-limited
+        }
+    }
+
     // Trigger GitHub loads
     loadGitHubStats();
+    loadGitHubStars();
 });
