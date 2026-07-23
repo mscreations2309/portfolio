@@ -29,25 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. AI Highlight Toggle
-    const aiToggle = document.getElementById('aiHighlightToggle');
-    let aiHighlightsEnabled = true; // Enabled by default for recruiter wow factor
-
-    // Apply default active state
+    // Apply default active state for AI highlights
     document.body.classList.add('ai-highlight-active');
-
-    aiToggle.addEventListener('click', () => {
-        aiHighlightsEnabled = !aiHighlightsEnabled;
-        if (aiHighlightsEnabled) {
-            document.body.classList.add('ai-highlight-active');
-            aiToggle.classList.add('animate-pulse');
-            aiToggle.querySelector('span').textContent = 'Highlight AI Skillsets';
-        } else {
-            document.body.classList.remove('ai-highlight-active');
-            aiToggle.classList.remove('animate-pulse');
-            aiToggle.querySelector('span').textContent = 'Show AI Skillsets';
-        }
-    });
 
     // 3. Print Button Handler
     const printBtn = document.getElementById('printBtn');
