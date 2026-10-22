@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const langColors = {
         'Kotlin':     { cls: 'lang-kotlin',     hex: 'hsl(280, 75%, 65%)' },
         'Java':       { cls: 'lang-java',        hex: 'hsl(20, 80%, 55%)' },
+        'C#':         { cls: 'lang-csharp',      hex: 'hsl(270, 60%, 50%)' },
+        'PowerShell': { cls: 'lang-powershell',  hex: 'hsl(205, 80%, 45%)' },
         'TypeScript': { cls: 'lang-typescript',  hex: 'hsl(210, 80%, 55%)' },
         'JavaScript': { cls: 'lang-javascript',  hex: 'hsl(48, 95%, 55%)' },
         'Python':     { cls: 'lang-python',      hex: 'hsl(220, 75%, 60%)' },
