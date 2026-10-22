@@ -160,7 +160,7 @@ body {
 /* Top row: contact card (left) + summary (right) */
 .resume-top-row {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 360px 1fr;
     gap: 1.75rem;
     align-items: stretch;
 }
@@ -173,9 +173,11 @@ body {
 
 /* Summary card fills the height of the contact card */
 .summary-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-right: 135px; /* Ensures text never overlaps the QR badge at the right of the content */
 }
 
 /* AI card - full width, 3 bullet columns */
@@ -215,25 +217,126 @@ body {
 }
 
 .profile-section {
+    position: relative;
     text-align: center;
-    padding: 2rem;
+    padding: 2.2rem 2rem 2rem;
     background-color: var(--bg-card);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow);
 }
 
+/* Portfolio QR Code Badge (Matches Image 1: spacious, clean card at right of the content) */
+.portfolio-qr-badge,
+.profile-qr-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.75rem 0.85rem 0.65rem;
+    background: #ffffff;
+    border: 1.5px solid #d0d7de;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    z-index: 5;
+    cursor: pointer;
+}
+
+[data-theme="dark"] .portfolio-qr-badge,
+[data-theme="dark"] .profile-qr-badge {
+    background: #ffffff; /* Must remain crisp white for camera QR scanning */
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.portfolio-qr-badge:hover,
+.profile-qr-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.22);
+    border-color: var(--primary);
+}
+
+.portfolio-qr-img,
+.profile-qr-img {
+    width: 66px;
+    height: 66px;
+    background: #ffffff;
+    display: block;
+    border-radius: 4px;
+}
+
+.portfolio-qr-text,
+.profile-qr-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    line-height: 1.1;
+    margin-top: 0.1rem;
+}
+
+.portfolio-qr-text i,
+.profile-qr-text i {
+    font-size: 0.75rem;
+    color: var(--primary);
+}
+
+@media (max-width: 900px) {
+    .summary-card {
+        padding-right: 110px;
+    }
+    .portfolio-qr-badge,
+    .profile-qr-badge {
+        top: 1.1rem;
+        right: 1.1rem;
+        padding: 0.55rem 0.65rem 0.5rem;
+        border-radius: 12px;
+    }
+    .portfolio-qr-img,
+    .profile-qr-img {
+        width: 54px;
+        height: 54px;
+    }
+    .portfolio-qr-text,
+    .profile-qr-text {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .summary-card {
+        padding-right: 1.5rem;
+    }
+    .portfolio-qr-badge,
+    .profile-qr-badge {
+        position: static;
+        margin: 0 auto 1.25rem auto;
+        display: flex;
+        width: fit-content;
+    }
+}
+
 .avatar-container {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary-glow), var(--border-color));
     margin: 0 auto 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid var(--primary);
+    border: 3.5px solid var(--primary);
     overflow: hidden; /* Ensure rounded image cuts off correctly */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 .profile-img {
@@ -1086,8 +1189,8 @@ body {
         /* Dynamically inherit theme variables for print output */
         background-color: var(--bg-app) !important;
         color: var(--text-main) !important;
-        font-size: 6.5pt !important;
-        line-height: 1.22 !important;
+        font-size: 6.6pt !important;
+        line-height: 1.28 !important;
         margin: 0 !important;
         padding: 0 !important;
         -webkit-font-smoothing: antialiased;
@@ -1126,16 +1229,16 @@ body {
         max-width: 100% !important;
     }
 
-    /* Standard Card & Section Padding */
+    /* Standard Card & Section Padding (Comfortable spacing in PDF) */
     .card, 
     .content-section,
     .profile-section,
     .contact-card, 
     .skills-card, 
     .ai-workflow-card {
-        padding: 0.3rem 0.55rem !important;
-        margin-bottom: 0.22rem !important;
-        border-radius: 4px !important;
+        padding: 0.38rem 0.6rem !important;
+        margin-bottom: 0.28rem !important;
+        border-radius: 6px !important;
         box-shadow: none !important;
         background-color: var(--bg-card) !important;
         border: 1px solid var(--border-color) !important;
@@ -1146,18 +1249,18 @@ body {
     .section-title,
     .main-section-title,
     .summary-title {
-        font-size: 7.8pt !important;
+        font-size: 8.2pt !important;
         font-weight: 700 !important;
-        margin-bottom: 0.15rem !important;
+        margin-bottom: 0.2rem !important;
         display: flex !important;
         align-items: center !important;
-        gap: 0.25rem !important;
+        gap: 0.28rem !important;
         color: var(--text-main) !important;
     }
 
     .main-section-title i,
     .section-title i {
-        font-size: 7.4pt !important;
+        font-size: 7.8pt !important;
         color: var(--primary) !important;
     }
 
@@ -1190,44 +1293,47 @@ body {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 0.12rem !important;
-        padding: 0.35rem 0.55rem !important;
+        gap: 0.14rem !important;
+        padding: 0.42rem 0.65rem !important;
         box-sizing: border-box !important;
-        margin-bottom: 0.2rem !important;
+        margin-bottom: 0.26rem !important;
     }
 
     .avatar-container {
-        width: 40px !important;
-        height: 40px !important;
+        width: 70px !important;
+        height: 70px !important;
+        border-radius: 50% !important;
+        border: 2px solid var(--primary) !important;
         flex-shrink: 0 !important;
-        margin: 0 auto 0.08rem auto !important;
+        margin: 0 auto 0.12rem auto !important;
+        box-shadow: none !important;
     }
 
     .profile-section .name {
-        font-size: 11.5pt !important;
+        font-size: 12pt !important;
         font-weight: 700 !important;
-        margin-bottom: 0.04rem !important;
+        margin-bottom: 0.05rem !important;
         text-align: center !important;
         width: 100% !important;
         white-space: nowrap !important;
-        line-height: 1.1 !important;
+        line-height: 1.15 !important;
     }
 
     .profile-section .tagline {
-        font-size: 6.8pt !important;
+        font-size: 7pt !important;
         font-weight: 600 !important;
         text-align: center !important;
-        margin-bottom: 0.02rem !important;
+        margin-bottom: 0.03rem !important;
         width: 100% !important;
         color: var(--primary) !important;
     }
 
     .profile-section .specialty {
-        font-size: 6.2pt !important;
+        font-size: 6.4pt !important;
         font-weight: 600 !important;
         text-align: center !important;
         letter-spacing: 0.25px !important;
-        margin-bottom: 0.12rem !important;
+        margin-bottom: 0.14rem !important;
         width: 100% !important;
     }
 
@@ -1237,60 +1343,90 @@ body {
         flex-wrap: wrap !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 0.12rem 0.65rem !important;
+        gap: 0.15rem 0.8rem !important;
         border-top: 1px solid var(--border-color) !important;
-        margin-top: 0.08rem !important;
-        padding-top: 0.15rem !important;
+        margin-top: 0.12rem !important;
+        padding-top: 0.18rem !important;
         width: 100% !important;
         list-style: none !important;
     }
 
     .profile-contact-list li {
-        font-size: 6.1pt !important;
+        font-size: 6.3pt !important;
         white-space: nowrap !important;
     }
 
     .btn-portfolio-pdf {
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 0.2rem !important;
-        padding: 0.1rem 0.5rem !important;
-        background-color: var(--primary) !important;
-        color: white !important;
-        border-radius: 3px !important;
-        font-family: var(--font-heading) !important;
-        font-weight: 600 !important;
-        font-size: 5.8pt !important;
-        text-decoration: none !important;
-        margin-top: 0.12rem !important;
-        border: none !important;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    .btn-portfolio-pdf i {
-        color: white !important;
-        font-size: 5.8pt !important;
+        display: none !important;
     }
 
     .sidebar {
         width: 100% !important;
         max-width: 100% !important;
-        margin-bottom: 0.2rem !important;
+        margin-bottom: 0.25rem !important;
     }
 
     .summary-card {
+        position: relative !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        padding: 0.3rem 0.55rem !important;
-        margin-bottom: 0.2rem !important;
+        padding: 0.42rem 0.65rem !important;
+        padding-right: 82px !important; /* Space for the QR code at right of content */
+        margin-bottom: 0.28rem !important;
+    }
+
+    /* Portfolio QR Badge in Print (Spacious white card as shown in Image 1) */
+    .portfolio-qr-badge,
+    .profile-qr-badge {
+        position: absolute !important;
+        top: 0.35rem !important;
+        right: 0.55rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.14rem !important;
+        padding: 0.35rem 0.45rem !important; /* Space inside QR badge as shown in image 1 */
+        background: #ffffff !important;
+        border: 1px solid #d0d7de !important;
+        border-radius: 8px !important;
+        text-decoration: none !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
+        z-index: 10 !important;
+    }
+
+    .portfolio-qr-img,
+    .profile-qr-img {
+        width: 48px !important;
+        height: 48px !important;
+        display: block !important;
+        background: #ffffff !important;
+        border-radius: 2px !important;
+    }
+
+    .portfolio-qr-text,
+    .profile-qr-text {
+        font-size: 5.6pt !important;
+        font-weight: 700 !important;
+        color: var(--primary) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.18rem !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
+        letter-spacing: 0.2px !important;
+        margin-top: 0.05rem !important;
+    }
+
+    .portfolio-qr-text i,
+    .profile-qr-text i {
+        font-size: 5.4pt !important;
+        color: var(--primary) !important;
     }
 
     .summary-text {
-        font-size: 6.1pt !important;
-        line-height: 1.2 !important;
+        font-size: 6.3pt !important;
+        line-height: 1.25 !important;
         margin: 0 !important;
     }
 
@@ -1298,27 +1434,27 @@ body {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        padding: 0.3rem 0.55rem !important;
-        margin-bottom: 0.2rem !important;
+        padding: 0.38rem 0.6rem !important;
+        margin-bottom: 0.28rem !important;
     }
 
     .ai-intro {
-        font-size: 6.1pt !important;
-        margin-bottom: 0.12rem !important;
-        line-height: 1.18 !important;
+        font-size: 6.3pt !important;
+        margin-bottom: 0.14rem !important;
+        line-height: 1.22 !important;
     }
 
     .ai-bullets {
         display: flex !important;
         flex-direction: column !important;
-        gap: 0.1rem !important;
+        gap: 0.12rem !important;
         padding-left: 0.8rem !important;
         margin: 0 !important;
     }
 
     .ai-bullets li {
-        font-size: 6.1pt !important;
-        line-height: 1.2 !important;
+        font-size: 6.3pt !important;
+        line-height: 1.25 !important;
     }
 
     /* Main Content Container: flows naturally */
