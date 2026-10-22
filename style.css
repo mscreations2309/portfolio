@@ -1506,7 +1506,9 @@ body {
     .skills-grid-premium {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.22rem !important;
+        gap: 0.3rem !important;
+        max-width: 78% !important;
+        margin: 0 auto !important;
     }
 
     .skill-category-card {
@@ -1519,28 +1521,28 @@ body {
         overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        text-align: left !important;
     }
 
     .skill-cat-header {
         width: 100% !important;
         box-sizing: border-box !important;
-        padding: 0.14rem 0.28rem !important;
+        padding: 0.14rem 0.32rem !important;
         font-size: 5.8pt !important;
         display: flex !important;
-        justify-content: center !important;
+        justify-content: space-between !important;
         align-items: center !important;
-        gap: 0.35rem !important;
-        text-align: center !important;
+        gap: 0.25rem !important;
+        text-align: left !important;
     }
 
     .skill-cat-header .cat-left {
         display: flex !important;
         align-items: center !important;
-        justify-content: center !important;
-        gap: 0.2rem !important;
+        justify-content: flex-start !important;
+        gap: 0.22rem !important;
     }
 
     .skill-cat-header .cat-left i {
@@ -1562,41 +1564,41 @@ body {
     }
 
     .skill-tags-list {
-        padding: 0.12rem 0.18rem !important;
+        padding: 0.12rem 0.22rem !important;
         gap: 0.08rem !important;
         display: flex !important;
         flex-direction: column !important;
         flex-wrap: nowrap !important;
-        align-content: center !important;
-        justify-content: center !important;
-        align-items: center !important;
+        align-content: flex-start !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
         width: 100% !important;
         box-sizing: border-box !important;
         flex: 1 !important;
-        text-align: center !important;
+        text-align: left !important;
     }
 
-    .skill-pill {
-        padding: 1px 5px !important;
+    .skill-tags-list .skill-pill {
+        padding: 1px 4.5px !important;
         font-size: 5.3pt !important;
         font-weight: 500 !important;
         border-radius: 2.5px !important;
         line-height: 1.15 !important;
-        display: inline-flex !important;
+        display: flex !important;
         align-items: center !important;
-        justify-content: center !important;
-        gap: 0.32rem !important;
-        width: fit-content !important;
-        max-width: 95% !important;
-        margin: 0 auto !important;
-        text-align: center !important;
+        justify-content: space-between !important;
+        gap: 0.35rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        text-align: left !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         box-sizing: border-box !important;
     }
 
-    .skill-pill em {
+    .skill-tags-list .skill-pill em {
         font-size: 4.4pt !important;
         font-weight: 700 !important;
         font-style: normal !important;
@@ -1610,7 +1612,11 @@ body {
 
     /* Secondary Skills Strip in Print (Page 1) */
     .secondary-skills-strip {
-        margin-top: 0.15rem !important;
+        margin-top: 0.18rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 78% !important;
+        box-sizing: border-box !important;
         padding: 0.15rem 0.3rem !important;
         border-radius: 3px !important;
         border: 1px dashed var(--border-color) !important;
@@ -1619,7 +1625,7 @@ body {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 0.08rem !important;
+        gap: 0.1rem !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
     }
@@ -1644,22 +1650,28 @@ body {
         display: flex !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 0.12rem !important;
+        align-items: center !important;
+        gap: 0.14rem 0.25rem !important;
+        width: 100% !important;
     }
 
     .secondary-skills-pills .skill-pill {
-        padding: 0.8px 3px !important;
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 1px 4.5px !important;
         font-size: 5.2pt !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 0.15rem !important;
+        gap: 0.18rem !important;
         white-space: nowrap !important;
+        box-sizing: border-box !important;
     }
 
     .secondary-skills-pills .skill-pill em {
         font-size: 4.3pt !important;
-        margin-left: 0.12rem !important;
+        margin-left: 0.14rem !important;
     }
 
     /* =========================================================
