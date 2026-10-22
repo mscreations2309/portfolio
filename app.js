@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Apply default active state for AI highlights
+    // Apply default active state for key highlights
     document.body.classList.add('ai-highlight-active');
 
     // 3. Print Button Handler
