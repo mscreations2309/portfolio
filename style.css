@@ -1075,27 +1075,30 @@ body {
     }
 }
 
-/* --- Print & ATS Optimization (Strict 3-Page Executive Layout) --- */
+/* --- Print & ATS Optimization (Strict 2-Page Executive Masterpiece) --- */
 @media print {
     @page {
         size: A4 portrait;
-        margin: 0.4cm 0.6cm !important;
+        margin: 0.35cm 0.55cm !important;
     }
 
     body {
         /* Dynamically inherit theme variables for print output */
         background-color: var(--bg-app) !important;
         color: var(--text-main) !important;
-        font-size: 6.8pt !important;
-        line-height: 1.25 !important;
+        font-size: 6.5pt !important;
+        line-height: 1.22 !important;
         margin: 0 !important;
         padding: 0 !important;
         -webkit-font-smoothing: antialiased;
     }
 
-    /* Hide interactive elements and controls */
+    /* Hide non-essential elements for selection */
     .no-print, header, footer, .project-tabs, .skills-legend,
-    .github-image-cards, .github-repos-grid, .gh-view-all-btn {
+    .github-image-cards, .github-repos-grid, .gh-view-all-btn,
+    #github-section, .github-stats-row, .private-repos-callout,
+    .project-card:nth-child(n+5),
+    .education-item:nth-child(n+2) {
         display: none !important;
     }
 
@@ -1129,10 +1132,9 @@ body {
     .profile-section,
     .contact-card, 
     .skills-card, 
-    .ai-workflow-card,
-    .github-stat-card {
-        padding: 0.35rem 0.6rem !important;
-        margin-bottom: 0.3rem !important;
+    .ai-workflow-card {
+        padding: 0.3rem 0.55rem !important;
+        margin-bottom: 0.22rem !important;
         border-radius: 4px !important;
         box-shadow: none !important;
         background-color: var(--bg-card) !important;
@@ -1144,18 +1146,18 @@ body {
     .section-title,
     .main-section-title,
     .summary-title {
-        font-size: 8.2pt !important;
+        font-size: 7.8pt !important;
         font-weight: 700 !important;
-        margin-bottom: 0.2rem !important;
+        margin-bottom: 0.15rem !important;
         display: flex !important;
         align-items: center !important;
-        gap: 0.3rem !important;
+        gap: 0.25rem !important;
         color: var(--text-main) !important;
     }
 
     .main-section-title i,
     .section-title i {
-        font-size: 7.8pt !important;
+        font-size: 7.4pt !important;
         color: var(--primary) !important;
     }
 
@@ -1165,24 +1167,22 @@ body {
     .ai-workflow-card h3, .ai-workflow-card p, .ai-workflow-card li, .ai-workflow-card strong,
     .timeline-item h3, .timeline-item h4, .timeline-item li, .timeline-item span,
     .project-card h3, .project-card p, .project-card span,
-    .education-item h3, .education-item p, .education-item span,
-    .private-repos-callout strong, .private-repos-callout p, .private-repos-callout span,
-    .github-stat-card .stat-value, .github-stat-card .stat-label {
+    .education-item h3, .education-item p, .education-item span {
         color: var(--text-main) !important;
     }
 
     .profile-section .tagline, .profile-section .specialty,
     .timeline-item .job-duration, .project-desc, .education-item .date-badge,
-    .ai-bullets-row li, .job-bullets li, .gh-repo-desc {
+    .ai-bullets-row li, .job-bullets li {
         color: var(--text-muted) !important;
     }
 
-    i, .stat-icon i {
+    i {
         color: var(--primary) !important;
     }
 
     /* =========================================================
-       PAGE 1: Executive Profile, Summary, Pillars & Core Tech
+       PAGE 1: Executive Profile, Summary, Pillars & Skills Matrix
        ========================================================= */
     .profile-section {
         width: 100% !important;
@@ -1190,23 +1190,23 @@ body {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 0.15rem !important;
-        padding: 0.4rem 0.6rem !important;
+        gap: 0.12rem !important;
+        padding: 0.35rem 0.55rem !important;
         box-sizing: border-box !important;
-        margin-bottom: 0.25rem !important;
+        margin-bottom: 0.2rem !important;
     }
 
     .avatar-container {
-        width: 44px !important;
-        height: 44px !important;
+        width: 40px !important;
+        height: 40px !important;
         flex-shrink: 0 !important;
-        margin: 0 auto 0.1rem auto !important;
+        margin: 0 auto 0.08rem auto !important;
     }
 
     .profile-section .name {
-        font-size: 12.5pt !important;
+        font-size: 11.5pt !important;
         font-weight: 700 !important;
-        margin-bottom: 0.05rem !important;
+        margin-bottom: 0.04rem !important;
         text-align: center !important;
         width: 100% !important;
         white-space: nowrap !important;
@@ -1214,7 +1214,7 @@ body {
     }
 
     .profile-section .tagline {
-        font-size: 7.2pt !important;
+        font-size: 6.8pt !important;
         font-weight: 600 !important;
         text-align: center !important;
         margin-bottom: 0.02rem !important;
@@ -1223,11 +1223,11 @@ body {
     }
 
     .profile-section .specialty {
-        font-size: 6.5pt !important;
+        font-size: 6.2pt !important;
         font-weight: 600 !important;
         text-align: center !important;
-        letter-spacing: 0.3px !important;
-        margin-bottom: 0.15rem !important;
+        letter-spacing: 0.25px !important;
+        margin-bottom: 0.12rem !important;
         width: 100% !important;
     }
 
@@ -1237,60 +1237,60 @@ body {
         flex-wrap: wrap !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 0.15rem 0.75rem !important;
+        gap: 0.12rem 0.65rem !important;
         border-top: 1px solid var(--border-color) !important;
-        margin-top: 0.1rem !important;
-        padding-top: 0.2rem !important;
+        margin-top: 0.08rem !important;
+        padding-top: 0.15rem !important;
         width: 100% !important;
         list-style: none !important;
     }
 
     .profile-contact-list li {
-        font-size: 6.5pt !important;
+        font-size: 6.1pt !important;
         white-space: nowrap !important;
     }
 
     .btn-portfolio-pdf {
         display: inline-flex !important;
         align-items: center !important;
-        gap: 0.25rem !important;
-        padding: 0.12rem 0.55rem !important;
+        gap: 0.2rem !important;
+        padding: 0.1rem 0.5rem !important;
         background-color: var(--primary) !important;
         color: white !important;
         border-radius: 3px !important;
         font-family: var(--font-heading) !important;
         font-weight: 600 !important;
-        font-size: 6pt !important;
+        font-size: 5.8pt !important;
         text-decoration: none !important;
-        margin-top: 0.15rem !important;
+        margin-top: 0.12rem !important;
         border: none !important;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
     .btn-portfolio-pdf i {
         color: white !important;
-        font-size: 6.2pt !important;
+        font-size: 5.8pt !important;
     }
 
     .sidebar {
         width: 100% !important;
         max-width: 100% !important;
-        margin-bottom: 0.25rem !important;
+        margin-bottom: 0.2rem !important;
     }
 
     .summary-card {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        padding: 0.35rem 0.6rem !important;
-        margin-bottom: 0.25rem !important;
+        padding: 0.3rem 0.55rem !important;
+        margin-bottom: 0.2rem !important;
     }
 
     .summary-text {
-        font-size: 6.4pt !important;
-        line-height: 1.25 !important;
+        font-size: 6.1pt !important;
+        line-height: 1.2 !important;
         margin: 0 !important;
     }
 
@@ -1298,27 +1298,27 @@ body {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        padding: 0.35rem 0.6rem !important;
-        margin-bottom: 0.25rem !important;
+        padding: 0.3rem 0.55rem !important;
+        margin-bottom: 0.2rem !important;
     }
 
     .ai-intro {
-        font-size: 6.4pt !important;
-        margin-bottom: 0.15rem !important;
-        line-height: 1.2 !important;
+        font-size: 6.1pt !important;
+        margin-bottom: 0.12rem !important;
+        line-height: 1.18 !important;
     }
 
     .ai-bullets {
         display: flex !important;
         flex-direction: column !important;
-        gap: 0.12rem !important;
-        padding-left: 0.85rem !important;
+        gap: 0.1rem !important;
+        padding-left: 0.8rem !important;
         margin: 0 !important;
     }
 
     .ai-bullets li {
-        font-size: 6.4pt !important;
-        line-height: 1.22 !important;
+        font-size: 6.1pt !important;
+        line-height: 1.2 !important;
     }
 
     /* Main Content Container: flows naturally */
@@ -1336,7 +1336,7 @@ body {
         page-break-before: auto !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
-        padding: 0.35rem 0.6rem !important;
+        padding: 0.3rem 0.55rem !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
     }
@@ -1344,22 +1344,22 @@ body {
     .skills-grid-premium {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.25rem !important;
+        gap: 0.22rem !important;
     }
 
     .skill-category-card {
         margin-bottom: 0 !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
-        border-radius: 4px !important;
+        border-radius: 3.5px !important;
         border: 1px solid var(--border-color) !important;
         background-color: var(--bg-card) !important;
         overflow: hidden !important;
     }
 
     .skill-cat-header {
-        padding: 0.15rem 0.3rem !important;
-        font-size: 6.2pt !important;
+        padding: 0.12rem 0.28rem !important;
+        font-size: 5.8pt !important;
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
@@ -1368,37 +1368,37 @@ body {
     .skill-cat-header .cat-left {
         display: flex !important;
         align-items: center !important;
-        gap: 0.2rem !important;
+        gap: 0.18rem !important;
     }
 
     .skill-cat-header .cat-left i {
-        font-size: 6pt !important;
+        font-size: 5.6pt !important;
     }
 
     .skill-cat-header .cat-left span {
-        font-size: 6pt !important;
+        font-size: 5.8pt !important;
         font-weight: 700 !important;
-        letter-spacing: 0.2px !important;
+        letter-spacing: 0.15px !important;
         text-transform: uppercase !important;
     }
 
     .skill-cat-header .skill-count {
-        font-size: 4.8pt !important;
+        font-size: 4.6pt !important;
         font-weight: 700 !important;
-        padding: 1px 3px !important;
+        padding: 0.5px 2.5px !important;
         border-radius: 2px !important;
     }
 
     .skill-tags-list {
-        padding: 0.15rem 0.2rem !important;
-        gap: 0.1rem !important;
+        padding: 0.12rem 0.18rem !important;
+        gap: 0.08rem !important;
         display: flex !important;
         flex-direction: column !important;
     }
 
     .skill-pill {
         padding: 1px 3px !important;
-        font-size: 5.6pt !important;
+        font-size: 5.3pt !important;
         font-weight: 500 !important;
         border-radius: 2px !important;
         line-height: 1.15 !important;
@@ -1411,27 +1411,27 @@ body {
     }
 
     .skill-pill em {
-        font-size: 4.6pt !important;
+        font-size: 4.4pt !important;
         font-weight: 700 !important;
         font-style: normal !important;
-        padding: 0.5px 2.5px !important;
+        padding: 0.5px 2px !important;
         border-radius: 2px !important;
-        letter-spacing: 0.2px !important;
+        letter-spacing: 0.15px !important;
         text-transform: uppercase !important;
         flex-shrink: 0 !important;
-        margin-left: 0.2rem !important;
+        margin-left: 0.15rem !important;
     }
 
     /* Secondary Skills Strip in Print (Page 1) */
     .secondary-skills-strip {
-        margin-top: 0.2rem !important;
-        padding: 0.18rem 0.35rem !important;
-        border-radius: 3.5px !important;
+        margin-top: 0.15rem !important;
+        padding: 0.15rem 0.3rem !important;
+        border-radius: 3px !important;
         border: 1px dashed var(--border-color) !important;
         background: var(--bg-card) !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 0.1rem !important;
+        gap: 0.08rem !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
     }
@@ -1439,132 +1439,132 @@ body {
     .secondary-skills-title {
         display: flex !important;
         align-items: center !important;
-        gap: 0.2rem !important;
-        font-size: 5.6pt !important;
+        gap: 0.18rem !important;
+        font-size: 5.4pt !important;
         font-weight: 700 !important;
         color: var(--text-muted) !important;
     }
 
     .secondary-skills-title i {
-        font-size: 5.6pt !important;
+        font-size: 5.4pt !important;
         color: var(--primary) !important;
     }
 
     .secondary-skills-pills {
         display: flex !important;
         flex-wrap: wrap !important;
-        gap: 0.16rem !important;
+        gap: 0.12rem !important;
     }
 
     .secondary-skills-pills .skill-pill {
-        padding: 1px 3.5px !important;
-        font-size: 5.4pt !important;
+        padding: 0.8px 3px !important;
+        font-size: 5.2pt !important;
         display: inline-flex !important;
         align-items: center !important;
-        gap: 0.2rem !important;
+        gap: 0.18rem !important;
         white-space: nowrap !important;
     }
 
     .secondary-skills-pills .skill-pill em {
-        font-size: 4.5pt !important;
-        margin-left: 0.15rem !important;
+        font-size: 4.3pt !important;
+        margin-left: 0.12rem !important;
     }
 
     /* =========================================================
-       PAGE 2: Work Experience (Entire 8+ Years Timeline)
+       PAGE 2: Work Experience (Entire 8+ Years Timeline),
+               Top 4 Flagship Projects & Degree Education
        ========================================================= */
     .main-content > section:nth-of-type(2) {
         break-before: page !important;
         page-break-before: always !important;
         margin-top: 0 !important;
-        padding: 0.4rem 0.65rem !important;
-        margin-bottom: 0 !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 0.22rem !important;
     }
 
     .timeline {
-        padding-left: 1rem !important;
+        padding-left: 0.9rem !important;
     }
 
     .timeline-item {
-        margin-bottom: 0.3rem !important;
-        padding: 0.35rem 0.55rem !important;
+        margin-bottom: 0.22rem !important;
+        padding: 0.28rem 0.5rem !important;
         background-color: var(--bg-card) !important;
         border: 1px solid var(--border-color) !important;
-        border-radius: 4px !important;
+        border-radius: 3.5px !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
     }
 
     .timeline-item::after {
-        left: -0.95rem !important;
-        top: 0.75rem !important;
-        bottom: -0.75rem !important;
+        left: -0.85rem !important;
+        top: 0.65rem !important;
+        bottom: -0.65rem !important;
     }
 
     .timeline-marker {
-        left: -1.15rem !important;
-        top: 0.5rem !important;
-        width: 9px !important;
-        height: 9px !important;
+        left: -1.05rem !important;
+        top: 0.45rem !important;
+        width: 8px !important;
+        height: 8px !important;
         background-color: var(--bg-card) !important;
     }
 
     .timeline-item h3 {
-        font-size: 7.5pt !important;
+        font-size: 7.2pt !important;
         font-weight: 700 !important;
         margin-bottom: 1px !important;
     }
 
     .timeline-item h4 {
-        font-size: 6.8pt !important;
+        font-size: 6.5pt !important;
         font-weight: 600 !important;
         margin-bottom: 1px !important;
     }
 
     .timeline-item .job-duration {
-        font-size: 5.8pt !important;
-        padding: 1px 4px !important;
+        font-size: 5.5pt !important;
+        padding: 0.5px 3.5px !important;
     }
 
     .job-bullets {
-        gap: 0.1rem !important;
-        margin-top: 0.15rem !important;
-        padding-left: 0.8rem !important;
+        gap: 0.08rem !important;
+        margin-top: 0.12rem !important;
+        padding-left: 0.75rem !important;
     }
 
     .job-bullets li {
-        font-size: 6.3pt !important;
-        line-height: 1.23 !important;
-        margin-bottom: 0.08rem !important;
+        font-size: 6.1pt !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.06rem !important;
     }
 
     .ai-highlight-bullet {
-        padding: 0.15rem 0.3rem !important;
-        font-size: 6.3pt !important;
-        border-radius: 2.5px !important;
-        margin-top: 0.12rem !important;
+        padding: 0.12rem 0.25rem !important;
+        font-size: 6.1pt !important;
+        border-radius: 2px !important;
+        margin-top: 0.1rem !important;
     }
 
-    /* =========================================================
-       PAGE 3: Featured Projects, Education & GitHub Stats
-       ========================================================= */
+    /* Featured Projects: Flows on Page 2 (Top 4 Flagship Projects Only) */
     .main-content > section:nth-of-type(3) {
-        break-before: page !important;
-        page-break-before: always !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
         margin-top: 0 !important;
-        padding: 0.4rem 0.65rem !important;
-        margin-bottom: 0.3rem !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 0.22rem !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
     }
 
-    /* 9 Projects in a balanced 3x3 Grid */
     .projects-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.25rem !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.22rem !important;
     }
 
     .project-card {
-        padding: 0.3rem 0.45rem !important;
+        padding: 0.25rem 0.4rem !important;
         background-color: var(--bg-app) !important;
         border: 1px solid var(--border-color) !important;
         border-radius: 3.5px !important;
@@ -1577,145 +1577,79 @@ body {
 
     .project-card h3,
     .project-name {
-        font-size: 6.8pt !important;
+        font-size: 6.5pt !important;
         font-weight: 700 !important;
         margin-bottom: 1px !important;
     }
 
     .project-desc {
-        font-size: 5.6pt !important;
-        line-height: 1.18 !important;
-        margin-bottom: 0.2rem !important;
+        font-size: 5.4pt !important;
+        line-height: 1.15 !important;
+        margin-bottom: 0.15rem !important;
         color: var(--text-muted) !important;
     }
 
     .project-tech {
         display: flex !important;
         flex-wrap: wrap !important;
-        gap: 0.12rem !important;
+        gap: 0.1rem !important;
     }
 
     .tech-badge {
-        padding: 0.5px 3px !important;
-        font-size: 5pt !important;
+        padding: 0.5px 2.5px !important;
+        font-size: 4.8pt !important;
         border-radius: 2px !important;
-        line-height: 1.2 !important;
+        line-height: 1.15 !important;
     }
 
-    /* Education Section (flows naturally on Page 3) */
+    /* Education Section: Flows on Page 2 (B.Tech Degree Only) */
     .main-content > section:nth-of-type(4) {
         break-before: auto !important;
         page-break-before: auto !important;
         margin-top: 0 !important;
-        padding: 0.35rem 0.6rem !important;
-        margin-bottom: 0.3rem !important;
-        break-inside: avoid !important;
-        page-break-inside: avoid !important;
-    }
-
-    .education-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.25rem !important;
-    }
-
-    .education-item {
-        padding: 0.3rem 0.45rem !important;
-        background-color: var(--bg-app) !important;
-        border: 1px solid var(--border-color) !important;
-        border-radius: 3.5px !important;
-        break-inside: avoid !important;
-        page-break-inside: avoid !important;
-    }
-
-    .education-item h3 {
-        font-size: 6.8pt !important;
-        font-weight: 700 !important;
-        margin-bottom: 1px !important;
-    }
-
-    .education-item p {
-        font-size: 5.8pt !important;
-        line-height: 1.18 !important;
-        margin: 0 !important;
-    }
-
-    .education-item .date-badge {
-        font-size: 5.2pt !important;
-        padding: 1px 3.5px !important;
-    }
-
-    /* GitHub Stats & Private Repos (flows naturally on Page 3) */
-    .main-content > section:nth-of-type(5) {
-        break-before: auto !important;
-        page-break-before: auto !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-top: 0 !important;
-        padding: 0.35rem 0.6rem !important;
+        padding: 0.3rem 0.55rem !important;
         margin-bottom: 0 !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
     }
 
-    .github-stats-row {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.25rem !important;
-        margin-bottom: 0.25rem !important;
+    .education-grid {
+        display: block !important;
     }
 
-    .github-stat-card {
-        padding: 0.25rem 0.35rem !important;
+    .education-item {
+        padding: 0.25rem 0.45rem !important;
+        background-color: var(--bg-app) !important;
         border: 1px solid var(--border-color) !important;
         border-radius: 3.5px !important;
-        background: var(--bg-app) !important;
-        text-align: center !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
     }
 
-    .github-stat-card .stat-icon i {
-        font-size: 7.5pt !important;
+    .education-item .edu-header {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.4rem !important;
     }
 
-    .github-stat-card .stat-value {
-        font-size: 9pt !important;
+    .education-item h3 {
+        font-size: 6.5pt !important;
         font-weight: 700 !important;
-        line-height: 1.1 !important;
+        margin: 0 !important;
     }
 
-    .github-stat-card .stat-label {
-        font-size: 5.2pt !important;
-    }
-
-    .private-repos-callout {
-        padding: 0.35rem 0.55rem !important;
-        margin-top: 0.2rem !important;
-        border-radius: 3.5px !important;
-        background: var(--bg-app) !important;
-        border: 1px solid var(--border-color) !important;
-    }
-
-    .private-repos-text strong {
-        font-size: 6.8pt !important;
-    }
-
-    .private-repos-text p {
+    .education-item p {
         font-size: 5.8pt !important;
-        line-height: 1.18 !important;
-        margin: 0.1rem 0 !important;
+        line-height: 1.15 !important;
+        margin: 0 !important;
     }
 
-    .private-repos-tags {
-        gap: 0.2rem !important;
-        margin-top: 0.2rem !important;
-    }
-
-    .private-repos-tags span {
+    .education-item .date-badge {
         font-size: 5.2pt !important;
-        padding: 0.5px 3.5px !important;
-        border-radius: 10px !important;
+        padding: 0.5px 3px !important;
     }
 }
 
