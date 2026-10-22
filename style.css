@@ -1521,6 +1521,7 @@ body {
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
+        text-align: center !important;
     }
 
     .skill-cat-header {
@@ -1565,26 +1566,30 @@ body {
         gap: 0.08rem !important;
         display: flex !important;
         flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        align-content: center !important;
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
         box-sizing: border-box !important;
         flex: 1 !important;
+        text-align: center !important;
     }
 
     .skill-pill {
-        padding: 1px 4.5px !important;
+        padding: 1px 5px !important;
         font-size: 5.3pt !important;
         font-weight: 500 !important;
         border-radius: 2.5px !important;
         line-height: 1.15 !important;
         display: inline-flex !important;
         align-items: center !important;
-        justify-content: space-between !important;
-        gap: 0.4rem !important;
+        justify-content: center !important;
+        gap: 0.32rem !important;
         width: fit-content !important;
         max-width: 95% !important;
         margin: 0 auto !important;
+        text-align: center !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
