@@ -1025,23 +1025,27 @@ body {
     }
 }
 
-/* --- Print & ATS Optimization --- */
+/* --- Print & ATS Optimization (Strict 3-Page Executive Layout) --- */
 @media print {
     @page {
-        margin: 0 !important;
+        size: A4 portrait;
+        margin: 0.4cm 0.6cm !important;
     }
 
     body {
         /* Dynamically inherit theme variables for print output */
         background-color: var(--bg-app) !important;
         color: var(--text-main) !important;
-        font-size: 7.5pt !important; /* Smaller, crisp font size for print / PDF */
-        line-height: 1.35 !important;
-        margin: 0.5cm 0.7cm !important; /* Clean margin to allow multi-page flow without cutoffs */
+        font-size: 6.8pt !important;
+        line-height: 1.25 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-font-smoothing: antialiased;
     }
 
     /* Hide interactive elements and controls */
-    .no-print, header, footer, .project-tabs {
+    .no-print, header, footer, .project-tabs, .skills-legend,
+    .github-image-cards, .github-repos-grid, .gh-view-all-btn {
         display: none !important;
     }
 
@@ -1069,152 +1073,43 @@ body {
         max-width: 100% !important;
     }
 
-    /* Padding and spacing optimizations for clean printing */
+    /* Standard Card & Section Padding */
     .card, 
+    .content-section,
     .profile-section,
     .contact-card, 
     .skills-card, 
     .ai-workflow-card,
     .github-stat-card {
-        padding: 0.75rem 1rem !important;
-        margin-bottom: 0.5rem !important;
-        border-radius: var(--radius-md) !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 0.3rem !important;
+        border-radius: 4px !important;
         box-shadow: none !important;
         background-color: var(--bg-card) !important;
         border: 1px solid var(--border-color) !important;
-    }
-
-    /* Contact / Profile Card */
-    .profile-section {
-        width: 100% !important;
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 0.35rem !important;
-        padding: 0.75rem 1rem !important;
         box-sizing: border-box !important;
-        margin-bottom: 0.4rem !important;
     }
 
-    .avatar-container {
-        width: 70px !important;
-        height: 70px !important;
-        flex-shrink: 0 !important;
-        margin: 0 auto 0.2rem auto !important;
-    }
-
-    .profile-section .name {
-        font-size: 15pt !important;
-        margin-bottom: 0.15rem !important;
-        text-align: center !important;
-        width: 100% !important;
-        white-space: nowrap !important;
-    }
-
-    .profile-section .tagline {
-        font-size: 8.5pt !important;
-        text-align: center !important;
-        margin-bottom: 0.1rem !important;
-        width: 100% !important;
-    }
-
-    .profile-section .specialty {
-        font-size: 7.8pt !important;
-        text-align: center !important;
-        margin-bottom: 0.3rem !important;
-        width: 100% !important;
-    }
-
-    /* Contact list: centered horizontal row */
-    .profile-contact-list {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 0.3rem 1rem !important;
-        border-top: 1px solid var(--border-color) !important;
-        margin-top: 0.25rem !important;
-        padding-top: 0.4rem !important;
-        width: 100% !important;
-        list-style: none !important;
-    }
-
-    .profile-contact-list li {
-        font-size: 7.2pt !important;
-        white-space: nowrap !important;
-    }
-
-    .btn-portfolio-pdf {
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 0.4rem !important;
-        padding: 0.35rem 0.9rem !important;
-        background-color: var(--primary) !important;
-        color: white !important;
-        border-radius: var(--radius-md) !important;
-        font-family: var(--font-heading) !important;
-        font-weight: 600 !important;
-        font-size: 7.2pt !important;
-        text-decoration: none !important;
-        margin-top: 0.35rem !important;
-        border: none !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    .btn-portfolio-pdf i {
-        color: white !important;
-        font-size: 7.5pt !important;
-    }
-
-    .sidebar {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-bottom: 0.4rem !important;
-    }
-
-    .summary-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        padding: 0.75rem 1rem !important;
-        margin-bottom: 0.4rem !important;
-    }
-
-    .summary-title,
+    /* Headings */
     .section-title,
-    .main-section-title {
-        font-size: 9.5pt !important;
-        margin-bottom: 0.35rem !important;
+    .main-section-title,
+    .summary-title {
+        font-size: 8.2pt !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.2rem !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.3rem !important;
+        color: var(--text-main) !important;
     }
 
-    .summary-text {
-        font-size: 7.2pt !important;
-        line-height: 1.35 !important;
+    .main-section-title i,
+    .section-title i {
+        font-size: 7.8pt !important;
+        color: var(--primary) !important;
     }
 
-    .ai-full-width {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        padding: 0.75rem 1rem !important;
-        margin-bottom: 0 !important;
-    }
-
-    .ai-intro {
-        font-size: 7.2pt !important;
-        margin-bottom: 0.3rem !important;
-    }
-
-    .ai-bullets li {
-        font-size: 7.2pt !important;
-        line-height: 1.25 !important;
-    }
-
-    /* Force high-contrast text color overrides specifically for print layout elements */
+    /* High-contrast text color overrides specifically for print */
     .card p, .card h1, .card h2, .card h3, .card h4, .card span, .card strong, .card li,
     .profile-section h1, .profile-section p, .profile-section li, .profile-section a,
     .ai-workflow-card h3, .ai-workflow-card p, .ai-workflow-card li, .ai-workflow-card strong,
@@ -1226,54 +1121,195 @@ body {
         color: var(--text-main) !important;
     }
 
-    /* Soften secondary text colors in print for visual hierarchy */
     .profile-section .tagline, .profile-section .specialty,
     .timeline-item .job-duration, .project-desc, .education-item .date-badge,
     .ai-bullets-row li, .job-bullets li, .gh-repo-desc {
         color: var(--text-muted) !important;
     }
 
-    /* Keep icons highly visible using main text theme color */
     i, .stat-icon i {
         color: var(--primary) !important;
     }
 
-    /* Main content container */
+    /* =========================================================
+       PAGE 1: Executive Profile, Summary, Pillars & Core Tech
+       ========================================================= */
+    .profile-section {
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.15rem !important;
+        padding: 0.4rem 0.6rem !important;
+        box-sizing: border-box !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .avatar-container {
+        width: 44px !important;
+        height: 44px !important;
+        flex-shrink: 0 !important;
+        margin: 0 auto 0.1rem auto !important;
+    }
+
+    .profile-section .name {
+        font-size: 12.5pt !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.05rem !important;
+        text-align: center !important;
+        width: 100% !important;
+        white-space: nowrap !important;
+        line-height: 1.1 !important;
+    }
+
+    .profile-section .tagline {
+        font-size: 7.2pt !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        margin-bottom: 0.02rem !important;
+        width: 100% !important;
+        color: var(--primary) !important;
+    }
+
+    .profile-section .specialty {
+        font-size: 6.5pt !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        letter-spacing: 0.3px !important;
+        margin-bottom: 0.15rem !important;
+        width: 100% !important;
+    }
+
+    .profile-contact-list {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0.15rem 0.75rem !important;
+        border-top: 1px solid var(--border-color) !important;
+        margin-top: 0.1rem !important;
+        padding-top: 0.2rem !important;
+        width: 100% !important;
+        list-style: none !important;
+    }
+
+    .profile-contact-list li {
+        font-size: 6.5pt !important;
+        white-space: nowrap !important;
+    }
+
+    .btn-portfolio-pdf {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.25rem !important;
+        padding: 0.12rem 0.55rem !important;
+        background-color: var(--primary) !important;
+        color: white !important;
+        border-radius: 3px !important;
+        font-family: var(--font-heading) !important;
+        font-weight: 600 !important;
+        font-size: 6pt !important;
+        text-decoration: none !important;
+        margin-top: 0.15rem !important;
+        border: none !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .btn-portfolio-pdf i {
+        color: white !important;
+        font-size: 6.2pt !important;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .summary-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .summary-text {
+        font-size: 6.4pt !important;
+        line-height: 1.25 !important;
+        margin: 0 !important;
+    }
+
+    .ai-full-width {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .ai-intro {
+        font-size: 6.4pt !important;
+        margin-bottom: 0.15rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .ai-bullets {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.12rem !important;
+        padding-left: 0.85rem !important;
+        margin: 0 !important;
+    }
+
+    .ai-bullets li {
+        font-size: 6.4pt !important;
+        line-height: 1.22 !important;
+    }
+
+    /* Main Content Container: flows naturally */
     .main-content {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        break-before: page !important;
-        page-break-before: always !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
     }
 
-    /* ==========================================
-       PAGE 2: Core Technologies (3x3 Compact Grid)
-       ========================================== */
+    /* Core Technologies (stays on Page 1) */
     .main-content > section:nth-of-type(1) {
-        margin-top: 0.2cm !important;
-        padding: 0.75rem 1rem !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding: 0.35rem 0.6rem !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
     }
 
     .skills-grid-premium {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.35rem !important;
+        gap: 0.25rem !important;
     }
 
     .skill-category-card {
         margin-bottom: 0 !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
-        border-radius: 5px !important;
+        border-radius: 4px !important;
         border: 1px solid var(--border-color) !important;
         background-color: var(--bg-card) !important;
         overflow: hidden !important;
     }
 
     .skill-cat-header {
-        padding: 0.2rem 0.4rem !important;
-        font-size: 6.8pt !important;
+        padding: 0.15rem 0.3rem !important;
+        font-size: 6.2pt !important;
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
@@ -1282,214 +1318,306 @@ body {
     .skill-cat-header .cat-left {
         display: flex !important;
         align-items: center !important;
-        gap: 0.3rem !important;
+        gap: 0.2rem !important;
     }
 
     .skill-cat-header .cat-left i {
-        font-size: 6.8pt !important;
+        font-size: 6pt !important;
     }
 
     .skill-cat-header .cat-left span {
-        font-size: 6.6pt !important;
+        font-size: 6pt !important;
         font-weight: 700 !important;
         letter-spacing: 0.2px !important;
+        text-transform: uppercase !important;
     }
 
     .skill-cat-header .skill-count {
-        font-size: 5.4pt !important;
+        font-size: 4.8pt !important;
+        font-weight: 700 !important;
         padding: 1px 3px !important;
-        border-radius: 3px !important;
+        border-radius: 2px !important;
     }
 
     .skill-tags-list {
-        padding: 0.2rem 0.3rem !important;
-        gap: 0.16rem !important;
+        padding: 0.15rem 0.2rem !important;
+        gap: 0.1rem !important;
         display: flex !important;
         flex-direction: column !important;
     }
 
     .skill-pill {
-        padding: 0.08rem 0.3rem !important;
-        font-size: 6.2pt !important;
-        border-radius: 3px !important;
+        padding: 1px 3px !important;
+        font-size: 5.6pt !important;
+        font-weight: 500 !important;
+        border-radius: 2px !important;
         line-height: 1.15 !important;
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
     }
 
     .skill-pill em {
-        font-size: 5.2pt !important;
-        padding: 1px 3px !important;
+        font-size: 4.6pt !important;
+        font-weight: 700 !important;
+        font-style: normal !important;
+        padding: 0.5px 2.5px !important;
         border-radius: 2px !important;
-        letter-spacing: 0.1px !important;
+        letter-spacing: 0.2px !important;
+        text-transform: uppercase !important;
+        flex-shrink: 0 !important;
+        margin-left: 0.2rem !important;
     }
 
-    /* ==========================================
-       PAGE 3: Work Experience
-       ========================================== */
+    /* =========================================================
+       PAGE 2: Work Experience (Entire 8+ Years Timeline)
+       ========================================================= */
     .main-content > section:nth-of-type(2) {
         break-before: page !important;
         page-break-before: always !important;
-        margin-top: 0.3cm !important;
-        padding: 0.75rem 1rem !important;
+        margin-top: 0 !important;
+        padding: 0.4rem 0.65rem !important;
+        margin-bottom: 0 !important;
     }
 
     .timeline {
-        padding-left: 1.25rem !important;
+        padding-left: 1rem !important;
     }
 
     .timeline-item {
-        margin-bottom: 0.4rem !important;
-        padding: 0.5rem 0.75rem !important;
+        margin-bottom: 0.3rem !important;
+        padding: 0.35rem 0.55rem !important;
         background-color: var(--bg-card) !important;
         border: 1px solid var(--border-color) !important;
-        border-radius: var(--radius-sm) !important;
+        border-radius: 4px !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
     }
 
     .timeline-item::after {
-        left: -1.2rem !important;
-        top: 0.9rem !important;
-        bottom: -0.9rem !important;
+        left: -0.95rem !important;
+        top: 0.75rem !important;
+        bottom: -0.75rem !important;
     }
 
     .timeline-marker {
-        left: -1.45rem !important;
-        top: 0.6rem !important;
+        left: -1.15rem !important;
+        top: 0.5rem !important;
+        width: 9px !important;
+        height: 9px !important;
         background-color: var(--bg-card) !important;
     }
 
     .timeline-item h3 {
-        font-size: 8.5pt !important;
+        font-size: 7.5pt !important;
+        font-weight: 700 !important;
+        margin-bottom: 1px !important;
     }
 
     .timeline-item h4 {
-        font-size: 7.5pt !important;
+        font-size: 6.8pt !important;
+        font-weight: 600 !important;
+        margin-bottom: 1px !important;
     }
 
     .timeline-item .job-duration {
-        font-size: 6.8pt !important;
+        font-size: 5.8pt !important;
+        padding: 1px 4px !important;
     }
 
     .job-bullets {
-        gap: 0.18rem !important;
-        margin-top: 0.25rem !important;
+        gap: 0.1rem !important;
+        margin-top: 0.15rem !important;
+        padding-left: 0.8rem !important;
     }
 
     .job-bullets li {
-        font-size: 7pt !important;
-        line-height: 1.25 !important;
+        font-size: 6.3pt !important;
+        line-height: 1.23 !important;
+        margin-bottom: 0.08rem !important;
     }
 
     .ai-highlight-bullet {
-        padding: 0.2rem 0.35rem !important;
-        font-size: 7pt !important;
+        padding: 0.15rem 0.3rem !important;
+        font-size: 6.3pt !important;
+        border-radius: 2.5px !important;
+        margin-top: 0.12rem !important;
     }
 
-    /* ==========================================
-       PAGE 4: Featured Projects & Education
-       ========================================== */
+    /* =========================================================
+       PAGE 3: Featured Projects, Education & GitHub Stats
+       ========================================================= */
     .main-content > section:nth-of-type(3) {
         break-before: page !important;
         page-break-before: always !important;
-        margin-top: 0.3cm !important;
-        padding: 0.75rem 1rem !important;
+        margin-top: 0 !important;
+        padding: 0.4rem 0.65rem !important;
+        margin-bottom: 0.3rem !important;
     }
 
-    .projects-grid, 
-    .education-grid {
+    /* 9 Projects in a balanced 3x3 Grid */
+    .projects-grid {
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 0.45rem !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.25rem !important;
     }
 
-    .project-card, 
-    .education-item {
+    .project-card {
+        padding: 0.3rem 0.45rem !important;
         background-color: var(--bg-app) !important;
         border: 1px solid var(--border-color) !important;
-        padding: 0.55rem 0.75rem !important;
-        border-radius: var(--radius-sm) !important;
+        border-radius: 3.5px !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
     }
 
     .project-card h3,
     .project-name {
-        font-size: 8.2pt !important;
+        font-size: 6.8pt !important;
+        font-weight: 700 !important;
+        margin-bottom: 1px !important;
     }
 
     .project-desc {
-        font-size: 6.8pt !important;
-        line-height: 1.22 !important;
-        margin-bottom: 0.3rem !important;
+        font-size: 5.6pt !important;
+        line-height: 1.18 !important;
+        margin-bottom: 0.2rem !important;
+        color: var(--text-muted) !important;
     }
 
     .project-tech {
-        gap: 0.2rem !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.12rem !important;
     }
 
     .tech-badge {
-        padding: 0.08rem 0.28rem !important;
-        font-size: 6.2pt !important;
-        border-radius: 3px !important;
+        padding: 0.5px 3px !important;
+        font-size: 5pt !important;
+        border-radius: 2px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Education Section (flows naturally on Page 3) */
+    .main-content > section:nth-of-type(4) {
+        break-before: auto !important;
+        page-break-before: auto !important;
+        margin-top: 0 !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 0.3rem !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .education-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.25rem !important;
+    }
+
+    .education-item {
+        padding: 0.3rem 0.45rem !important;
+        background-color: var(--bg-app) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 3.5px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
     }
 
     .education-item h3 {
-        font-size: 8.2pt !important;
+        font-size: 6.8pt !important;
+        font-weight: 700 !important;
+        margin-bottom: 1px !important;
     }
 
     .education-item p {
-        font-size: 6.8pt !important;
-        line-height: 1.22 !important;
+        font-size: 5.8pt !important;
+        line-height: 1.18 !important;
+        margin: 0 !important;
     }
 
     .education-item .date-badge {
-        font-size: 6.2pt !important;
+        font-size: 5.2pt !important;
+        padding: 1px 3.5px !important;
     }
 
-    /* ==========================================
-       PAGE 5: GitHub Stats & Private Repos
-       ========================================== */
+    /* GitHub Stats & Private Repos (flows naturally on Page 3) */
     .main-content > section:nth-of-type(5) {
-        break-before: page !important;
-        page-break-before: always !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
         width: 100% !important;
         max-width: 100% !important;
-        margin-top: 0.3cm !important;
-        padding: 0.75rem 1rem !important;
+        margin-top: 0 !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 0 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .github-stats-row {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.25rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .github-stat-card {
+        padding: 0.25rem 0.35rem !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 3.5px !important;
+        background: var(--bg-app) !important;
+        text-align: center !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .github-stat-card .stat-icon i {
+        font-size: 7.5pt !important;
+    }
+
+    .github-stat-card .stat-value {
+        font-size: 9pt !important;
+        font-weight: 700 !important;
+        line-height: 1.1 !important;
+    }
+
+    .github-stat-card .stat-label {
+        font-size: 5.2pt !important;
     }
 
     .private-repos-callout {
-        padding: 0.55rem 0.75rem !important;
-        margin-top: 0.4rem !important;
+        padding: 0.35rem 0.55rem !important;
+        margin-top: 0.2rem !important;
+        border-radius: 3.5px !important;
+        background: var(--bg-app) !important;
+        border: 1px solid var(--border-color) !important;
     }
 
     .private-repos-text strong {
-        font-size: 7.8pt !important;
+        font-size: 6.8pt !important;
     }
 
     .private-repos-text p {
-        font-size: 6.8pt !important;
-        line-height: 1.22 !important;
+        font-size: 5.8pt !important;
+        line-height: 1.18 !important;
+        margin: 0.1rem 0 !important;
+    }
+
+    .private-repos-tags {
+        gap: 0.2rem !important;
+        margin-top: 0.2rem !important;
     }
 
     .private-repos-tags span {
-        font-size: 6.2pt !important;
-        padding: 0.1rem 0.3rem !important;
-    }
-
-    .gh-view-all-btn {
-        display: inline-flex !important;
-        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
-        color: white !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        padding: 0.45rem 1rem !important;
-        font-size: 7.5pt !important;
-        text-decoration: none !important;
-        border-radius: var(--radius-md) !important;
+        font-size: 5.2pt !important;
+        padding: 0.5px 3.5px !important;
+        border-radius: 10px !important;
     }
 }
 
@@ -1875,33 +2003,4 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 }
-
-/* Print: show stats only, hide image cards and repo grid */
-@media print {
-    .github-image-cards,
-    .github-repos-grid,
-    .gh-view-all-btn {
-        display: none !important;
-    }
-
-    .github-stats-row {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.45rem !important;
-    }
-
-    .github-stat-card {
-        padding: 0.5rem 0.65rem !important;
-        border: 1px solid var(--border-color) !important;
-        background: #ffffff !important;
-        break-inside: avoid !important;
-        page-break-inside: avoid !important;
-    }
-
-    .stat-value {
-        font-size: 1.15rem !important;
-    }
-
-    .stat-label {
-        font-size: 6.5pt !important;
-    }
 }
