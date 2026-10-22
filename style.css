@@ -650,6 +650,56 @@ body {
     border-color: var(--border-color);
 }
 
+/* Secondary / Cross-Platform Skills Strip */
+.secondary-skills-strip {
+    margin-top: 1.35rem;
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--radius-md);
+    background: color-mix(in sRGB, var(--primary) 4%, var(--bg-card));
+    border: 1px dashed var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    transition: var(--transition);
+}
+
+.secondary-skills-strip:hover {
+    border-color: color-mix(in sRGB, var(--primary) 60%, var(--border-color));
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.secondary-skills-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.secondary-skills-title i {
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.secondary-skills-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.secondary-skills-pills .skill-pill {
+    font-size: 0.82rem;
+    padding: 0.35rem 0.75rem;
+    cursor: default;
+}
+
+[data-theme="dark"] .secondary-skills-strip {
+    background: color-mix(in sRGB, var(--primary) 7%, hsl(var(--hue), 25%, 11%));
+    border-color: color-mix(in sRGB, var(--primary) 25%, var(--border-color));
+}
+
 /* AI Workflow Styling */
 .ai-workflow-card {
     border-left: 4px solid var(--secondary);
@@ -1370,6 +1420,54 @@ body {
         text-transform: uppercase !important;
         flex-shrink: 0 !important;
         margin-left: 0.2rem !important;
+    }
+
+    /* Secondary Skills Strip in Print (Page 1) */
+    .secondary-skills-strip {
+        margin-top: 0.2rem !important;
+        padding: 0.18rem 0.35rem !important;
+        border-radius: 3.5px !important;
+        border: 1px dashed var(--border-color) !important;
+        background: var(--bg-card) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.1rem !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .secondary-skills-title {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.2rem !important;
+        font-size: 5.6pt !important;
+        font-weight: 700 !important;
+        color: var(--text-muted) !important;
+    }
+
+    .secondary-skills-title i {
+        font-size: 5.6pt !important;
+        color: var(--primary) !important;
+    }
+
+    .secondary-skills-pills {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.16rem !important;
+    }
+
+    .secondary-skills-pills .skill-pill {
+        padding: 1px 3.5px !important;
+        font-size: 5.4pt !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.2rem !important;
+        white-space: nowrap !important;
+    }
+
+    .secondary-skills-pills .skill-pill em {
+        font-size: 4.5pt !important;
+        margin-left: 0.15rem !important;
     }
 
     /* =========================================================
