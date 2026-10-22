@@ -1517,20 +1517,26 @@ body {
         border: 1px solid var(--border-color) !important;
         background-color: var(--bg-card) !important;
         overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
     }
 
     .skill-cat-header {
-        padding: 0.12rem 0.28rem !important;
+        padding: 0.14rem 0.28rem !important;
         font-size: 5.8pt !important;
         display: flex !important;
-        justify-content: space-between !important;
+        justify-content: center !important;
         align-items: center !important;
+        gap: 0.35rem !important;
+        text-align: center !important;
     }
 
     .skill-cat-header .cat-left {
         display: flex !important;
         align-items: center !important;
-        gap: 0.18rem !important;
+        justify-content: center !important;
+        gap: 0.2rem !important;
     }
 
     .skill-cat-header .cat-left i {
@@ -1556,6 +1562,9 @@ body {
         gap: 0.08rem !important;
         display: flex !important;
         flex-direction: column !important;
+        justify-content: center !important;
+        align-items: stretch !important;
+        flex: 1 !important;
     }
 
     .skill-pill {
@@ -1565,8 +1574,10 @@ body {
         border-radius: 2px !important;
         line-height: 1.15 !important;
         display: flex !important;
-        justify-content: space-between !important;
+        justify-content: center !important;
         align-items: center !important;
+        gap: 0.3rem !important;
+        text-align: center !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
@@ -1593,6 +1604,8 @@ body {
         background: var(--bg-card) !important;
         display: flex !important;
         flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
         gap: 0.08rem !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
@@ -1601,10 +1614,12 @@ body {
     .secondary-skills-title {
         display: flex !important;
         align-items: center !important;
+        justify-content: center !important;
         gap: 0.18rem !important;
         font-size: 5.4pt !important;
         font-weight: 700 !important;
         color: var(--text-muted) !important;
+        text-align: center !important;
     }
 
     .secondary-skills-title i {
@@ -1615,6 +1630,7 @@ body {
     .secondary-skills-pills {
         display: flex !important;
         flex-wrap: wrap !important;
+        justify-content: center !important;
         gap: 0.12rem !important;
     }
 
@@ -1623,7 +1639,8 @@ body {
         font-size: 5.2pt !important;
         display: inline-flex !important;
         align-items: center !important;
-        gap: 0.18rem !important;
+        justify-content: center !important;
+        gap: 0.15rem !important;
         white-space: nowrap !important;
     }
 
